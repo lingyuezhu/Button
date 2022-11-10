@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void main() {
   runApp(const MyApp());
@@ -43,37 +44,75 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              width: 100,
-              height: 50,
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  primary: Colors.black26,
+              width: 130,
+              height: 40,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.amberAccent,
                 ),
-                child: Text("123"),
+                child: Text("123",
+                  style: TextStyle(
+                      color: Colors.red
+                  ),
+                  textScaleFactor: 1.5,
+                ),
                 onPressed: (){},
               ),
             ),
+            SizedBox(height: 20,),
             SizedBox(
               width: 100,
-              height: 50,
-              child: TextButton(
-                style: TextButton.styleFrom(
+              height: 40,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
                   primary: Colors.blue,
                 ),
-                child: Text("456"),
+                child: Text("456",
+                  textScaleFactor: 1.5,
+                ),
                 onPressed: (){},
               ),
             ),
+            SizedBox(height: 20,),
             SizedBox(
-              width: 100,
+              width: 110,
               height: 50,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   primary: Colors.blue,
                 ),
-                child: Text("789"),
-                onPressed:(){},
+                child: Text("Snackbar",
+                  textScaleFactor: 1.2,
+                ),
+                onPressed:(){
+                  final snackBar = SnackBar(
+                      content: const Text("按下了Snackbar按鈕")
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                },
               ),
+            ),
+            IconButton(
+                onPressed: (){},
+                icon:Icon(Icons.smartphone,
+                )
+            ),
+            FloatingActionButton(
+              onPressed: _incrementCounter,
+              tooltip: 'Increment',
+              child: const Icon(Icons.smartphone),
+            ),
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.black12
+              ),
+                onPressed: (){},
+                icon:Icon(Icons.smartphone,color: Colors.red,),
+                label:Text("帶圖標的icon",
+                  style: TextStyle(
+                    color: Colors.red
+                  ),
+                ),
             ),
           ]
         ),
@@ -81,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.smartphone),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
